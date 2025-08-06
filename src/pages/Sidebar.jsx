@@ -29,6 +29,11 @@ function Sidebar() {
                         <img className="h-6 w-auto" src={crear} alt="Crear" />
                         Crear
                     </Link>
+                    
+                    <Link to="/historia" className="flex gap-4 items-center h-10 rounded hover:bg-gray-200 text-left font-semibold">
+                        <img className="h-6 w-auto" src={crear} alt="Crear Historia" />
+                        Crear Historia
+                    </Link>
 
                     <Link to="/perfil" className="flex gap-4 items-center h-10 rounded hover:bg-gray-200 text-left font-semibold">
                         <img

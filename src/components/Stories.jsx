@@ -1,37 +1,41 @@
-// src/components/Stories.jsx
+import React, { useEffect, useState } from 'react'
+import { supabase } from '../supabaseClient'
+import StoryModal from './StoryModal'
+
+
+
 function Stories() {
-    const dummyStories = [
-        {
-            id: 1,
-            username: 'efrain',
-            image: 'https://i.pravatar.cc/150?img=1',
-        },
-        {
-            id: 2,
-            username: 'laura',
-            image: 'https://i.pravatar.cc/150?img=2',
-        },
-        {
-            id: 3,
-            username: 'andres',
-            image: 'https://i.pravatar.cc/150?img=3',
-        },
-        {
-            id: 4,
-            username: 'cata',
-            image: 'https://i.pravatar.cc/150?img=4',
-        },
-        {
-            id: 5,
-            username: 'maria',
-            image: 'https://i.pravatar.cc/150?img=5',
-        },
-    ]
+    const [stories, setStories] = useState([])
+    const [selectedStory, setSelectedStory] = useState(null)
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    useEffect(() => {
+        const fetchStories = async () => {
+            const { data, error } = await supabase
+                .from('stories')
+                .select('id, image_url, user_id, created_at')
+                .order('created_at', { ascending: false })
+
+            if (!error) setStories(data)
+        }
+
+        fetchStories()
+    }, [])
+
+    const openModal = (story) => {
+        setSelectedStory(story)
+        setIsModalOpen(true)
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false)
+        setSelectedStory(null)
+    }
 
     return (
         <div className="flex  justify-center overflow-x-auto  gap-4 py-4 px-2">
-            {dummyStories.map(story => (
-                <div key={story.id} className="flex flex-col items-center text-sm">
+            {stories.map((story) => (
+                <div key={story.id} onClick={() => openModal(story)} className="flex flex-col items-center text-sm">
                     <div className="w-22 h-22 rounded-full p-[2px] bg-gradient-to-tr from-pink-500 to-yellow-500">
                         <img
                             src={story.image}
@@ -42,6 +46,7 @@ function Stories() {
                     <p className="mt-1 text-gray-700">{story.username}</p>
                 </div>
             ))}
+            <StoryModal isOpen={isModalOpen} onClose={closeModal} story={selectedStory} />
         </div>
     )
 }
