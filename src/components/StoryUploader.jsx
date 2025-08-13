@@ -22,41 +22,49 @@ function StoryUploader() {
     }
 
     const handleUpload = async () => {
-        if (!image || !session?.user) return
+        if (!image || !session?.user) return;
 
-        const filename = `${uuidv4()}-${image.name}`
+        const filename = `${uuidv4()}-${image.name}`;
 
-        const { data, error } = await supabase.storage
+        // Subir imagen a Supabase Storage
+        const { error: uploadError } = await supabase.storage
             .from('stories')
-            .upload(filename, image)
+            .upload(filename, image);
 
-        if (error) {
-            alert('Error al subir la historia')
-            return
+        if (uploadError) {
+            alert('Error al subir la historia');
+            return;
         }
 
+        // Obtener URL pública de la imagen
         const { data: publicUrlData } = supabase.storage
             .from('stories')
-            .getPublicUrl(filename)
+            .getPublicUrl(filename);
 
+        // Datos del usuario desde AuthContext
+        const username = session.user.user_metadata?.username || session.user.email;
+        const profile_picture = session.user.user_metadata?.avatar_url || 'https://via.placeholder.com/150';
+
+        // Insertar historia en la tabla con nombre e imagen del usuario
         const { error: insertError } = await supabase
             .from('stories')
             .insert([
                 {
                     image_url: publicUrlData.publicUrl,
                     user_id: session.user.id,
+                    username,
+                    profile_picture,
                 },
-            ])
+            ]);
 
         if (insertError) {
-            alert('Error al guardar en la base de datos')
+            alert('Error al guardar en la base de datos');
         } else {
-            // alert('¡Historia publicada!')
-            setImage(null)
-            setPreviewUrl(null)
-            navigate('/')
+            setImage(null);
+            setPreviewUrl(null);
+            navigate('/');
         }
-    }
+    };
 
     return (
 
