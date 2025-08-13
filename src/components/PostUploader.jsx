@@ -94,7 +94,7 @@ function PostUploader() {
                     )}
 
                     <label className="block mb-4 cursor-pointer group">
-                        <div className="flex items-center justify-center w-full h-36 border-2 border-dashed border-gray-300 rounded-xl group-hover:border-blue-400 transition">
+                        <div className="flex items-center justify-center w-full h-28 border-2 border-dashed border-gray-300 rounded-xl group-hover:border-blue-400 transition">
                             <span className="text-gray-400 group-hover:text-blue-500 transition">
                                 {file ? 'Cambiar imagen' : 'Haz clic para subir una imagen'}
                             </span>
