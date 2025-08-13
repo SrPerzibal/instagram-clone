@@ -78,7 +78,7 @@ function PostUploader() {
 
         <>
             <Sidebar />
-            <div className="max-w-md w-full mx-auto mt-10 bg-white border border-gray-200 rounded-3xl shadow-lg overflow-hidden transition-all">
+            <div className="max-w-md w-full mx-auto mt-10 bg-white border border-gray-200 rounded-3xl shadow-lg overflow-auto transition-all">
                 <div className="p-6">
                     <h2 className="text-2xl font-bold text-gray-800 mb-5 text-center">Crear nueva publicación</h2>
 
@@ -111,7 +111,7 @@ function PostUploader() {
                         placeholder="Escribe una descripción..."
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        className="w-full h-28 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent resize-none mb-4 text-gray-700"
+                        className="w-full h-20 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent resize-none mb-4 text-gray-700"
                     />
 
                     <button
