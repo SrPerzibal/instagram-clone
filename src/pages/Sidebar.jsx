@@ -29,7 +29,7 @@ function Sidebar() {
                         <img className="h-6 w-auto" src={crear} alt="Crear" />
                         Crear
                     </Link>
-                    
+
                     <Link to="/historia" className="flex gap-4 items-center h-10 rounded hover:bg-gray-200 text-left font-semibold">
                         <img className="h-6 w-auto" src={crear} alt="Crear Historia" />
                         Crear Historia
@@ -54,10 +54,17 @@ function Sidebar() {
             <div className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 flex justify-around items-center h-13 z-50">
                 <Link to="/" className="flex items-center justify-center">
                     <img src={home} className="h-6 w-auto" alt="Inicio" />
+                    Inicio
                 </Link>
 
                 <Link to="/crear" className="flex items-center justify-center">
                     <img src={crear} className="h-6 w-auto" alt="Crear" />
+                    Crear Publicacion
+                </Link>
+
+                <Link to="/historia" className="flex gap-4 items-center h-10 rounded hover:bg-gray-200 text-left font-semibold">
+                    <img className="h-6 w-auto" src={crear} alt="Crear Historia" />
+                    Crear Historia
                 </Link>
 
                 <Link to="/perfil" className="flex items-center justify-center">
