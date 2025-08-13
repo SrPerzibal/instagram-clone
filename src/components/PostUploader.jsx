@@ -78,7 +78,7 @@ function PostUploader() {
 
         <>
             <Sidebar />
-            <div className="max-w-md w-full mx-auto mt-10 bg-white border border-gray-200 rounded-3xl shadow-lg overflow-auto transition-all">
+            <div className="max-w-md w-full mx-auto mt-10 bg-white border border-gray-200 rounded-3xl shadow-lg overflow-y-scroll transition-all">
                 <div className="p-6">
                     <h2 className="text-2xl font-bold text-gray-800 mb-5 text-center">Crear nueva publicación</h2>
 
