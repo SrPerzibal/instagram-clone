@@ -16,7 +16,7 @@ function Sidebar() {
     return (
         <>
             {/* Sidebar para escritorio */}
-            <div className="hidden md:flex flex-col h-screen w-84 bg-white p-6 fixed border-r border-gray-300">
+            <div className="hidden md:flex flex-col h-screen w-84 md:w-55 bg-white p-6 fixed border-r border-gray-300">
                 <img className="h-9 w-30 mt-5" src={insta_logo} alt="Instagram" />
 
                 <nav className="flex flex-col gap-4 mt-9">

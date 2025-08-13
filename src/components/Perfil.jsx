@@ -36,7 +36,7 @@ function Perfil() {
                 <div className="max-w-[935px] mx-auto">
 
                     {/* Sección de perfil */}
-                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-10 mt-12 mb-8 sm:ml-45">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-10 mt-12 mb-8 sm:ml-45 md:ml-0">
                         {/* Imagen de perfil */}
                         <img
                             src={session.user.user_metadata?.picture || 'https://via.placeholder.com/150'}
@@ -64,7 +64,7 @@ function Perfil() {
                             </div>
 
                             <div>
-                                <p className="font-semibold">{session.user.user_metadata?.name || 'Efraín Vergara'}</p>
+                                <p className="font-semibold">{session.user.user_metadata?.name || 'Usuario de instagram'}</p>
                                 <p className="text-pink-500 text-sm">🍷</p>
                             </div>
                         </div>

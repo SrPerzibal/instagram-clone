@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router"
+import { Routes, Route } from "react-router"
 import PostUploader from "../components/PostUploader"
 import Feed from "../components/Feed"
 import Perfil from "../components/Perfil"

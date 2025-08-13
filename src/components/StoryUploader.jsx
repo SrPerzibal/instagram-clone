@@ -3,6 +3,7 @@ import { supabase } from '../supabaseClient'
 import { v4 as uuidv4 } from 'uuid'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import Sidebar from '../pages/Sidebar'
 
 function StoryUploader() {
     const { session } = useAuth()
@@ -58,37 +59,41 @@ function StoryUploader() {
     }
 
     return (
-        <div className="max-w-md mx-auto bg-white p-6 rounded-2xl shadow-lg text-center mt-10">
-            <h2 className="text-2xl font-bold mb-4">Crear nueva historia</h2>
 
-            {/* Área de imagen */}
-            <label
-                htmlFor="file"
-                className="border-2 border-dashed border-gray-300 w-full h-48 flex items-center justify-center cursor-pointer text-gray-400 rounded-lg mb-4"
-            >
-                {previewUrl ? (
-                    <img src={previewUrl} alt="preview" className="h-full object-contain" />
-                ) : (
-                    <span>Haz clic para subir una imagen</span>
-                )}
-                <input
-                    type="file"
-                    id="file"
-                    onChange={handleImageChange}
-                    className="hidden"
-                    accept="image/*"
-                />
-            </label>
+        <>
+            <Sidebar />
+            <div className="max-w-md mx-auto bg-white p-6 rounded-2xl shadow-lg text-center mt-10">
+                <h2 className="text-2xl font-bold mb-4">Crear nueva historia</h2>
 
-            {/* Botón */}
-            <button
-                onClick={handleUpload}
-                disabled={!image}
-                className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-lg w-full disabled:opacity-50"
-            >
-                Publicar
-            </button>
-        </div>
+                {/* Área de imagen */}
+                <label
+                    htmlFor="file"
+                    className="border-2 border-dashed border-gray-300 w-full h-48 flex items-center justify-center cursor-pointer text-gray-400 rounded-lg mb-4"
+                >
+                    {previewUrl ? (
+                        <img src={previewUrl} alt="preview" className="h-full object-contain" />
+                    ) : (
+                        <span>Haz clic para subir una imagen</span>
+                    )}
+                    <input
+                        type="file"
+                        id="file"
+                        onChange={handleImageChange}
+                        className="hidden"
+                        accept="image/*"
+                    />
+                </label>
+
+                {/* Botón */}
+                <button
+                    onClick={handleUpload}
+                    disabled={!image}
+                    className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-lg w-full disabled:opacity-50"
+                >
+                    Publicar
+                </button>
+            </div>
+        </>
     )
 }
 
