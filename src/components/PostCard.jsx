@@ -7,9 +7,8 @@ function PostCard({ post, user }) {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
 
-    const username = user.user_metadata?.name
+    const username = user?.user_metadata?.name;
 
-    // ✅ Cargar likes y comentarios al montar
     useEffect(() => {
         if (!post?.id) return;
 
@@ -35,7 +34,6 @@ function PostCard({ post, user }) {
         fetchComments();
     }, [post?.id, user]);
 
-    // ❤️ Like
     const toggleLike = async () => {
         if (!user) {
             alert("Debes iniciar sesión para dar like");
@@ -59,29 +57,41 @@ function PostCard({ post, user }) {
         }
     };
 
-    // 💬 Agregar comentario
-    const addComment = async (e) => {
-        if (e.key === "Enter" && newComment.trim() !== "") {
-            if (!user) {
-                alert("Debes iniciar sesión para comentar");
-                return;
-            }
+    // Función para enviar comentario
+    const sendComment = async () => {
+        if (newComment.trim() === "") return;
+        if (!user) {
+            alert("Debes iniciar sesión para comentar");
+            return;
+        }
 
-            const { data, error } = await supabase
-                .from("comments")
-                .insert([{ post_id: post.id, user_id: user.id, content: newComment, username: username}])
-                .select();
+        const { data, error } = await supabase
+            .from("comments")
+            .insert([{
+                post_id: post.id,
+                user_id: user.id,
+                content: newComment,
+                username: username
+            }])
+            .select();
 
-            if (!error && data) {
-                setComments(prev => [...prev, data[0]]);
-                setNewComment("");
-            }
+        if (!error && data) {
+            setComments(prev => [...prev, data[0]]);
+            setNewComment("");
+        }
+    };
+
+    // Permitir Enter como antes
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            sendComment();
         }
     };
 
     return (
         <div className="max-w-xl mx-auto bg-white border border-gray-300 rounded-md mb-6">
-            {/* Top - Usuario */}
+            {/* Usuario */}
             <div className="flex items-center p-4">
                 <img
                     src={post.profile_picture || 'https://via.placeholder.com/40'}
@@ -103,10 +113,7 @@ function PostCard({ post, user }) {
 
             {/* Acciones */}
             <div className="flex items-center gap-4 px-4 pt-2 text-xl">
-                <span
-                    onClick={toggleLike}
-                    className="cursor-pointer"
-                >
+                <span onClick={toggleLike} className="cursor-pointer">
                     {hasLiked ? "❤️" : "🤍"}
                 </span>
                 <span>💬</span>
@@ -132,13 +139,21 @@ function PostCard({ post, user }) {
                 )}
 
                 {/* Input de comentario */}
-                <input
-                    placeholder="Añade un comentario..."
-                    className="w-full mt-2 text-sm p-1 outline-none"
-                    value={newComment}
-                    onChange={(e) => setNewComment(e.target.value)}
-                    onKeyDown={addComment}
-                />
+                <div className="flex gap-2 mt-2">
+                    <input
+                        placeholder="Añade un comentario..."
+                        className="flex-1 text-sm p-1 outline-none border rounded"
+                        value={newComment}
+                        onChange={(e) => setNewComment(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                    />
+                    <button
+                        onClick={sendComment}
+                        className="text-blue-500 text-sm font-semibold"
+                    >
+                        Enviar
+                    </button>
+                </div>
             </div>
         </div>
     );
