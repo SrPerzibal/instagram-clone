@@ -78,7 +78,7 @@ function PostUploader() {
 
         <>
             <Sidebar />
-            <div className="max-w-md w-full mx-auto mt-10 bg-white border border-gray-200 rounded-3xl shadow-lg overflow-y-scroll transition-all">
+            <div className="max-w-md w-full mx-auto mt-10 bg-white border border-gray-200 rounded-3xl shadow-lg overflow-hidden max-sm:overflow-y-scroll transition-all">
                 <div className="p-6">
                     <h2 className="text-2xl font-bold text-gray-800 mb-5 text-center">Crear nueva publicación</h2>
 
@@ -94,7 +94,7 @@ function PostUploader() {
                     )}
 
                     <label className="block mb-4 cursor-pointer group">
-                        <div className="flex items-center justify-center w-full h-28 border-2 border-dashed border-gray-300 rounded-xl group-hover:border-blue-400 transition">
+                        <div className="flex items-center justify-center w-full h-36 border-2 border-dashed border-gray-300 rounded-xl group-hover:border-blue-400 transition">
                             <span className="text-gray-400 group-hover:text-blue-500 transition">
                                 {file ? 'Cambiar imagen' : 'Haz clic para subir una imagen'}
                             </span>
@@ -111,7 +111,7 @@ function PostUploader() {
                         placeholder="Escribe una descripción..."
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        className="w-full h-20 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent resize-none mb-4 text-gray-700"
+                        className="w-full h-28 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent resize-none mb-4 text-gray-700"
                     />
 
                     <button
