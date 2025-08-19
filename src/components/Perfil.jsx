@@ -74,7 +74,7 @@ function Perfil() {
                     <div className="border-t border-neutral-800 mb-4" />
 
                     {/* Grid de publicaciones */}
-                    <div className="grid grid-cols-3 gap-1 sm:gap-2">
+                    <div className="grid grid-cols-3 gap-1 mb-10 sm:gap-2">
                         {posts.map(post => (
                             <div key={post.id} className="aspect-square overflow-hidden">
                                 <img
