@@ -31,7 +31,7 @@ function Perfil() {
         <div className="flex">
             <Sidebar />
 
-            {/* Contenedor centralizado */}
+            {/* Contenedor */}
             <div className="ml-60 max-sm:ml-0 w-full min-h-screen px-4">
                 <div className="max-w-[935px] mx-auto">
 
