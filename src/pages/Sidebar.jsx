@@ -37,7 +37,7 @@ function Sidebar() {
 
                     <Link to="/perfil" className="flex gap-4 items-center h-10 rounded hover:bg-gray-200 text-left font-semibold">
                         <img
-                            src={session.user.user_metadata?.picture || 'https://via.placeholder.com/40'}
+                            src={session.user.user_metadata?.picture}
                             alt="Perfil"
                             className="h-7 w-7 rounded-full object-cover"
                         />
@@ -69,7 +69,7 @@ function Sidebar() {
 
                 <Link to="/perfil" className="flex flex-col items-center justify-center text-xs text-gray-700 hover:text-black transition">
                     <img
-                        src={session.user.user_metadata?.picture || 'https://via.placeholder.com/40'}
+                        src={session.user.user_metadata?.picture}
                         alt="Perfil"
                         className="h-7 w-7 rounded-full object-cover mb-1"
                     />

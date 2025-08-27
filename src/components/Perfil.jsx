@@ -39,7 +39,7 @@ function Perfil() {
                     <div className="flex flex-col sm:flex-row items-center sm:items-start gap-10 mt-12 mb-8 sm:ml-45 md:ml-0">
                         {/* Imagen de perfil */}
                         <img
-                            src={session.user.user_metadata?.picture || 'https://via.placeholder.com/150'}
+                            src={session.user.user_metadata?.picture}
                             alt="avatar"
                             className="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover"
                         />

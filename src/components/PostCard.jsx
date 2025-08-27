@@ -81,7 +81,7 @@ function PostCard({ post, user }) {
         }
     };
 
-    // Permitir Enter como antes
+    // Enviar con la tecla Enter
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             e.preventDefault();
@@ -94,7 +94,7 @@ function PostCard({ post, user }) {
             {/* Usuario */}
             <div className="flex items-center p-4">
                 <img
-                    src={post.profile_picture || 'https://via.placeholder.com/40'}
+                    src={post.profile_picture}
                     alt="avatar"
                     className="w-10 h-10 rounded-full object-cover"
                 />
@@ -133,6 +133,7 @@ function PostCard({ post, user }) {
                         {comments.map((c) => (
                             <p key={c.id}>
                                 <span className="font-semibold">{c.username || "User"}:</span> {c.content}
+                                <span>{new Date(c.created_at).toLocaleTimeString()}</span>
                             </p>
                         ))}
                     </div>

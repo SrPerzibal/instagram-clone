@@ -38,8 +38,7 @@ function Stories() {
         <div className="flex justify-center overflow-x-auto gap-4 py-4 px-2">
             {stories.map((story) => {
                 const username = story.username || 'Usuario';
-                const profilePic =
-                    story.profile_picture || 'https://via.placeholder.com/150';
+                const profilePic = story.profile_picture;
 
                 return (
                     <div

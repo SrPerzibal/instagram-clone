@@ -61,7 +61,7 @@ function PostUploader() {
                 console.error("❌ Error insertando:", insertError.message)
                 alert("Error guardando post: " + insertError.message)
             } else {
-                // alert("¡Post publicado! ✅")
+                // alert("¡Post publicado!")
                 setFile(null)
                 setDescription('')
                 navigate('/')

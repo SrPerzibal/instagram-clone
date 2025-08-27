@@ -44,7 +44,7 @@ function Feed() {
                     {/* Publicaciones */}
                     <div className="bg-white min-h-screen pt-6 max-w-full sm:max-w-2xl mx-auto pb-15">
                         {posts.map(post => (
-                            <PostCard key={post.id} post={post}  user={user}/>
+                            <PostCard key={post.id} post={post} user={user} />
                         ))}
                     </div>
                 </div>

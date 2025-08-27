@@ -43,7 +43,7 @@ function StoryUploader() {
 
         // Datos del usuario desde AuthContext
         const username = session.user.user_metadata?.name || session.user.email;
-        const profile_picture = session.user.user_metadata?.avatar_url || 'https://via.placeholder.com/150';
+        const profile_picture = session.user.user_metadata?.avatar_url;
 
         // Insertar historia en la tabla con nombre e imagen del usuario
         const { error: insertError } = await supabase
